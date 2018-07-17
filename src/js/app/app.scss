@@ -1,0 +1,42 @@
+$blue: #61dafb;
+$square: 250px;
+
+@mixin box {
+    width: 250px;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.box {
+    position: relative;
+    padding: 45px 0 0 10px;
+    font-size: 60px;
+    text-transform: uppercase;
+    @include box();
+}
+
+.box span {
+    color: $blue;
+    display: block;
+}
+
+.box::before {
+    top: 0;
+    left: 0;
+    border: 2px solid #000;
+    content: "";
+    display: block;
+    position: absolute;
+    animation: spin 5s linear 0s infinite;
+    z-index: -1;
+    @include box();
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
